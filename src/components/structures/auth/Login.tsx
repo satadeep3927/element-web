@@ -6,31 +6,30 @@ SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Com
 Please see LICENSE files in the repository root for full details.
 */
 
-import React, { type JSX, type ReactNode } from "react";
 import classNames from "classnames";
 import { logger } from "matrix-js-sdk/src/logger";
 import { type SSOFlow, SSOAction } from "matrix-js-sdk/src/matrix";
+import React, { type JSX, type ReactNode } from "react";
 
 import { _t, UserFriendlyError } from "../../../languageHandler";
 import Login, { type ClientLoginFlow, type OidcNativeFlow } from "../../../Login";
-import { messageForConnectionError, messageForLoginError } from "../../../utils/ErrorUtils";
-import AutoDiscoveryUtils from "../../../utils/AutoDiscoveryUtils";
-import AuthPage from "../../views/auth/AuthPage";
+import { type IMatrixClientCreds } from "../../../MatrixClientPeg";
 import PlatformPeg from "../../../PlatformPeg";
 import SettingsStore from "../../../settings/SettingsStore";
 import { UIFeature } from "../../../settings/UIFeature";
-import { type IMatrixClientCreds } from "../../../MatrixClientPeg";
+import { filterBoolean } from "../../../utils/arrays";
+import AutoDiscoveryUtils from "../../../utils/AutoDiscoveryUtils";
+import { messageForConnectionError, messageForLoginError } from "../../../utils/ErrorUtils";
+import { startOidcLogin } from "../../../utils/oidc/authorize";
+import { type ValidatedServerConfig } from "../../../utils/ValidatedServerConfig";
+import AuthBody from "../../views/auth/AuthBody";
+import AuthPage from "../../views/auth/AuthPage";
 import PasswordLogin from "../../views/auth/PasswordLogin";
+import AccessibleButton, { type ButtonEvent } from "../../views/elements/AccessibleButton";
 import InlineSpinner from "../../views/elements/InlineSpinner";
+import ServerPicker from "../../views/elements/ServerPicker";
 import Spinner from "../../views/elements/Spinner";
 import SSOButtons from "../../views/elements/SSOButtons";
-import ServerPicker from "../../views/elements/ServerPicker";
-import AuthBody from "../../views/auth/AuthBody";
-import AuthHeader from "../../views/auth/AuthHeader";
-import AccessibleButton, { type ButtonEvent } from "../../views/elements/AccessibleButton";
-import { type ValidatedServerConfig } from "../../../utils/ValidatedServerConfig";
-import { filterBoolean } from "../../../utils/arrays";
-import { startOidcLogin } from "../../../utils/oidc/authorize";
 
 interface IProps {
     serverConfig: ValidatedServerConfig;
@@ -530,7 +529,7 @@ export default class LoginComponent extends React.PureComponent<IProps, IState> 
 
         return (
             <AuthPage>
-                <AuthHeader disableLanguageSelector={this.props.isSyncing || this.state.busyLoggingIn} />
+                {/* <AuthHeader disableLanguageSelector={this.props.isSyncing || this.state.busyLoggingIn} /> */}
                 <AuthBody>
                     <h1>
                         {_t("action|sign_in")}

@@ -9,8 +9,6 @@ Please see LICENSE files in the repository root for full details.
 
 import React from "react";
 
-import AuthFooter from "./AuthFooter";
-
 interface IProps {
     /**
      * Whether to add a blurred shadow around the modal.
@@ -24,10 +22,18 @@ interface IProps {
 export default class AuthPage extends React.PureComponent<React.PropsWithChildren<IProps>> {
     public render(): React.ReactElement {
         return (
-            <>
+            <div style={{ 
+                minHeight: "100vh", 
+                width: "100%", 
+                background: "oklch(0.1395 0.0715 307.421)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "24px"
+            }}>
                 {this.props.children}
-                {/* <AuthFooter /> */}
-            </>
+            </div>
         );
     }
 }

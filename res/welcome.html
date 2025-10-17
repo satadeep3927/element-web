@@ -19,9 +19,6 @@
         position: sticky;
         top: 0;
         z-index: 50;
-        background: rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
         padding: 24px;
         display: flex;
         justify-content: space-between;
@@ -29,9 +26,264 @@
         width: 100%;
     }
 
+    .navbar::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: -1;
+    }
+
     .navbar .logo {
         height: 30px;
         width: auto;
+    }
+
+    .navbar-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 60;
+        position: relative;
+    }
+
+    .mobile-menu-btn span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+
+    .mobile-menu-toggle:checked ~ .navbar .mobile-menu-btn span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .mobile-menu-toggle:checked ~ .navbar .mobile-menu-btn span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    .mobile-menu-toggle:checked ~ .navbar .mobile-menu-btn span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    @media (min-width: 768px) {
+        .mobile-menu-btn {
+            display: none;
+        }
+        .mobile-menu-toggle {
+            display: none;
+        }
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        background: rgba(26, 15, 46, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        transition: right 0.3s ease;
+        z-index: 55;
+        overflow-y: auto;
+    }
+
+    .mobile-menu-toggle:checked ~ .mobile-menu {
+        right: 0;
+    }
+
+    .mobile-menu-close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+        font-size: 24px;
+    }
+
+    .mobile-menu-close::before {
+        content: '×';
+        line-height: 1;
+    }
+
+    .mobile-menu-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        list-style: none;
+        margin-top: 40px;
+    }
+
+    .mobile-menu-links label {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        transition: background 0.2s;
+        cursor: pointer;
+        display: block;
+    }
+
+    .mobile-menu-links label:hover {
+        background: rgba(139, 92, 246, 0.2);
+    }
+
+    .mobile-menu-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (min-width: 768px) {
+        .mobile-menu {
+            display: none;
+        }
+    }
+
+    .auth-buttons {
+        display: none;
+        gap: 12px;
+        align-items: center;
+    }
+
+    @media (min-width: 768px) {
+        .auth-buttons {
+            display: flex;
+        }
+    }
+
+    .auth-btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+
+    .auth-btn.sign-in {
+        color: rgba(255, 255, 255, 0.9);
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .auth-btn.sign-in:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .auth-btn.create-account {
+        color: #ffffff;
+        background: linear-gradient(to top, rgba(139, 92, 246, 0.4), rgba(139, 92, 246, 0.1));
+        border: 1px solid #8b5cf6;
+    }
+
+    .auth-btn.create-account:hover {
+        background: linear-gradient(to top, rgba(139, 92, 246, 0.6), rgba(139, 92, 246, 0.2));
+    }
+
+    .language-selector {
+        position: relative;
+    }
+
+    .language-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .language-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .language-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        min-width: 200px;
+        max-height: 400px;
+        overflow-y: auto;
+        background: rgba(26, 15, 46, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 8px;
+        display: none;
+        z-index: 100;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .language-dropdown.active {
+        display: block;
+    }
+
+    .language-option {
+        padding: 10px 12px;
+        border-radius: 4px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .language-option:hover {
+        background: rgba(139, 92, 246, 0.2);
+    }
+
+    .language-option.selected {
+        background: rgba(139, 92, 246, 0.3);
+        color: #ffffff;
     }
 
     .nav-links {
@@ -46,15 +298,18 @@
         }
     }
 
-    .nav-links a {
+    .nav-links a,
+    .nav-links span {
         color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
         font-weight: 500;
         font-size: 15px;
         transition: color 0.3s ease;
+        cursor: default;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links span:hover {
         color: #a855f7;
     }
 
@@ -723,20 +978,51 @@
     }
 </style>
 
+<!-- Mobile Menu Checkbox (must be before navbar for sibling selector) -->
+<input type="checkbox" id="mobileMenuToggle" class="mobile-menu-toggle" />
+
 <!-- Navigation -->
 <nav class="navbar">
     <div>
         <img src="/logo/logo.png" alt="StreamMint" class="logo" />
     </div>
     <ul class="nav-links">
-        <li><a href="#/directory">Product</a></li>
-        <li><a href="#about">Pricing</a></li>
-        <li><a href="#features">Blog</a></li>
-        <li><a href="#contact">Company</a></li>
-        <li><a href="#docs">Docs</a></li>
+        <li><span>Product</span></li>
+        <li><span>Pricing</span></li>
+        <li><span>Blog</span></li>
+        <li><span>Company</span></li>
+        <li><span>Docs</span></li>
     </ul>
-    <a href="#/login" class="get-started-btn">Get Started</a>
+    <div class="navbar-right">
+        <div class="auth-buttons">
+            <a href="#/login" class="auth-btn sign-in">Sign In</a>
+            <a href="#/register" class="auth-btn create-account">Create Account</a>
+        </div>
+        <label for="mobileMenuToggle" class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    </div>
 </nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+    <label for="mobileMenuToggle" class="mobile-menu-close"></label>
+    <ul class="mobile-menu-links">
+        <li><label for="mobileMenuToggle">Product</label></li>
+        <li><label for="mobileMenuToggle">Pricing</label></li>
+        <li><label for="mobileMenuToggle">Blog</label></li>
+        <li><label for="mobileMenuToggle">Company</label></li>
+        <li><label for="mobileMenuToggle">Docs</label></li>
+    </ul>
+    <div class="mobile-menu-buttons">
+        <a href="#/login" class="auth-btn sign-in">Sign In</a>
+        <a href="#/register" class="auth-btn create-account">Create Account</a>
+    </div>
+</div>
+
+</div>
 
 <!-- Main Container -->
 <div class="main-container">

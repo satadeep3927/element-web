@@ -6,45 +6,44 @@ SPDX-License-Identifier: AGPL-3.0-only OR GPL-3.0-only OR LicenseRef-Element-Com
 Please see LICENSE files in the repository root for full details.
 */
 
+import classNames from "classnames";
+import { logger } from "matrix-js-sdk/src/logger";
 import {
     AuthType,
     createClient,
-    type IAuthData,
-    type AuthDict,
-    type IInputs,
     MatrixError,
+    SSOAction,
+    type AuthDict,
+    type IAuthData,
+    type IInputs,
     type IRegisterRequestParams,
     type IRequestTokenResponse,
     type MatrixClient,
-    type SSOFlow,
-    SSOAction,
     type RegisterResponse,
+    type SSOFlow,
 } from "matrix-js-sdk/src/matrix";
-import React, { type JSX, Fragment, type ReactNode } from "react";
-import classNames from "classnames";
-import { logger } from "matrix-js-sdk/src/logger";
+import React, { Fragment, type JSX, type ReactNode } from "react";
 
-import { _t } from "../../../languageHandler";
-import { adminContactStrings, messageForResourceLimitError, resourceLimitStrings } from "../../../utils/ErrorUtils";
-import AutoDiscoveryUtils from "../../../utils/AutoDiscoveryUtils";
 import * as Lifecycle from "../../../Lifecycle";
-import { type IMatrixClientCreds, MatrixClientPeg } from "../../../MatrixClientPeg";
-import AuthPage from "../../views/auth/AuthPage";
 import Login, { type OidcNativeFlow } from "../../../Login";
+import { MatrixClientPeg, type IMatrixClientCreds } from "../../../MatrixClientPeg";
 import dis from "../../../dispatcher/dispatcher";
-import SSOButtons from "../../views/elements/SSOButtons";
-import ServerPicker from "../../views/elements/ServerPicker";
-import RegistrationForm from "../../views/auth/RegistrationForm";
-import AccessibleButton, { type ButtonEvent } from "../../views/elements/AccessibleButton";
-import AuthBody from "../../views/auth/AuthBody";
-import AuthHeader from "../../views/auth/AuthHeader";
-import InteractiveAuth, { type InteractiveAuthCallback } from "../InteractiveAuth";
-import Spinner from "../../views/elements/Spinner";
-import { AuthHeaderDisplay } from "./header/AuthHeaderDisplay";
-import { AuthHeaderProvider } from "./header/AuthHeaderProvider";
+import { _t } from "../../../languageHandler";
 import SettingsStore from "../../../settings/SettingsStore";
+import AutoDiscoveryUtils from "../../../utils/AutoDiscoveryUtils";
+import { adminContactStrings, messageForResourceLimitError, resourceLimitStrings } from "../../../utils/ErrorUtils";
 import { type ValidatedServerConfig } from "../../../utils/ValidatedServerConfig";
 import { startOidcLogin } from "../../../utils/oidc/authorize";
+import AuthBody from "../../views/auth/AuthBody";
+import AuthPage from "../../views/auth/AuthPage";
+import RegistrationForm from "../../views/auth/RegistrationForm";
+import AccessibleButton, { type ButtonEvent } from "../../views/elements/AccessibleButton";
+import SSOButtons from "../../views/elements/SSOButtons";
+import ServerPicker from "../../views/elements/ServerPicker";
+import Spinner from "../../views/elements/Spinner";
+import InteractiveAuth, { type InteractiveAuthCallback } from "../InteractiveAuth";
+import { AuthHeaderDisplay } from "./header/AuthHeaderDisplay";
+import { AuthHeaderProvider } from "./header/AuthHeaderProvider";
 
 const debuglog = (...args: any[]): void => {
     if (SettingsStore.getValue("debug_registration")) {
@@ -772,7 +771,6 @@ export default class Registration extends React.Component<IProps, IState> {
         }
         return (
             <AuthPage>
-                <AuthHeader />
                 <AuthHeaderProvider>
                     <AuthBody flex>{body}</AuthBody>
                 </AuthHeaderProvider>
