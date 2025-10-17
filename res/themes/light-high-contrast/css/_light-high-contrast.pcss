@@ -42,21 +42,23 @@ $roomtopic-color: $secondary-content;
  *
  * To use under very rare circumstances, always prefer the semantics defined
  * in https://compound.element.io/?path=/docs/tokens-semantic-colors--docs
+ * 
+ * StreamMint Custom Purple Accent Colors (High Contrast)
  */
-$accent-100: var(--cpd-color-green-100);
-$accent-200: var(--cpd-color-green-200);
-$accent-300: var(--cpd-color-green-300);
-$accent-400: var(--cpd-color-green-400);
-$accent-500: var(--cpd-color-green-500);
-$accent-600: var(--cpd-color-green-600);
-$accent-700: var(--cpd-color-green-700);
-$accent-800: var(--cpd-color-green-800);
-$accent-900: var(--cpd-color-green-900);
-$accent-1000: var(--cpd-color-green-1000);
-$accent-1100: var(--cpd-color-green-1100);
-$accent-1200: var(--cpd-color-green-1200);
-$accent-1300: var(--cpd-color-green-1300);
-$accent-1400: var(--cpd-color-green-1400);
+$accent-100: #f8f6ff;
+$accent-200: #f1edff;
+$accent-300: #e6e0ff;
+$accent-400: #d4c7ff;
+$accent-500: #c0a8ff;
+$accent-600: #8b5cf6;
+$accent-700: #7c3aed;
+$accent-800: #6d28d9;
+$accent-900: #5b21b6;
+$accent-1000: #4c1d95;
+$accent-1100: #3c1361;
+$accent-1200: #2d0a4f;
+$accent-1300: #1e0837;
+$accent-1400: #0f0420;
 
 /* Draw an outline on buttons with focus */
 .mx_AccessibleButton:focus {
@@ -230,4 +232,29 @@ $accent-1400: var(--cpd-color-green-1400);
 
 .mx_NetworkDropdown_removeServer::before {
     background-color: $background !important;
+}
+
+/* ******************** */
+/* StreamMint Custom Branding and Purple Theme (High Contrast) */
+/* ******************** */
+
+/* StreamMint Logo Branding */
+.mx_AuthHeaderLogo,
+.mx_AuthHeaderLogo img {
+    background-image: url("../../../favicon.ico") !important;
+    width: 64px !important;
+    height: 64px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+/* Override CSS Custom Properties for Purple Theme */
+:root {
+    --accent-color: #8b5cf6 !important;
+    --cpd-color-text-action-accent: #8b5cf6 !important;
+    --cpd-color-bg-action-primary-rest: #8b5cf6 !important;
+    --cpd-color-bg-action-primary-hovered: #7c3aed !important;
+    --cpd-color-bg-action-primary-pressed: #6d28d9 !important;
+    --cpd-color-icon-accent-tertiary: #8b5cf6 !important;
 }

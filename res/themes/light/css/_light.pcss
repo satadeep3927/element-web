@@ -1,6 +1,12 @@
 :root {
     /* This is set to Twemoji when the user opts into the bundled emoji font */
     --emoji-font-family: "";
+     --accent-color: #8b5cf6 !important;
+    --cpd-color-text-action-accent: #8b5cf6 !important;
+    --cpd-color-bg-action-primary-rest: #8b5cf6 !important;
+    --cpd-color-bg-action-primary-hovered: #7c3aed !important;
+    --cpd-color-bg-action-primary-pressed: #6d28d9 !important;
+    --cpd-color-icon-accent-tertiary: #8b5cf6 !important;
 }
 
 /* Nunito and Inter lacks combining diacritics, so these will fall through
@@ -36,7 +42,7 @@ $panel-actions: var(--cpd-color-alpha-gray-300);
 
 $separator: var(--cpd-color-gray-400);
 
-$accent: var(--cpd-color-text-action-accent);
+$accent: var(--accent-color);
 $alert: var(--cpd-color-text-critical-primary);
 $links: var(--cpd-color-text-link-external);
 $link-external: var(--cpd-color-text-link-external);
@@ -58,21 +64,23 @@ $username-variant6-color: var(--cpd-color-text-decorative-6);
  *
  * To use under very rare circumstances, always prefer the semantics defined
  * in https://compound.element.io/?path=/docs/tokens-semantic-colors--docs
+ * 
+ * StreamMint Custom Purple Accent Colors (Light Theme)
  */
-$accent-100: var(--cpd-color-green-100);
-$accent-200: var(--cpd-color-green-200);
-$accent-300: var(--cpd-color-green-300);
-$accent-400: var(--cpd-color-green-400);
-$accent-500: var(--cpd-color-green-500);
-$accent-600: var(--cpd-color-green-600);
-$accent-700: var(--cpd-color-green-700);
-$accent-800: var(--cpd-color-green-800);
-$accent-900: var(--cpd-color-green-900);
-$accent-1000: var(--cpd-color-green-1000);
-$accent-1100: var(--cpd-color-green-1100);
-$accent-1200: var(--cpd-color-green-1200);
-$accent-1300: var(--cpd-color-green-1300);
-$accent-1400: var(--cpd-color-green-1400);
+$accent-100: #f8f6ff;
+$accent-200: #f1edff;
+$accent-300: #e6e0ff;
+$accent-400: #d4c7ff;
+$accent-500: #c0a8ff;
+$accent-600: #8b5cf6;
+$accent-700: #7c3aed;
+$accent-800: #6d28d9;
+$accent-900: #5b21b6;
+$accent-1000: #4c1d95;
+$accent-1100: #3c1361;
+$accent-1200: #2d0a4f;
+$accent-1300: #1e0837;
+$accent-1400: #0f0420;
 
 /* Reused Figma non-compound colors */
 /* ******************** */
@@ -215,7 +223,7 @@ $roomtile-default-badge-bg-color: var(--cpd-color-icon-secondary);
 /* ******************** */
 $e2e-verified-color: var(--cpd-color-icon-success-primary);
 $e2e-warning-color: var(--cpd-color-icon-critical-primary);
-$e2e-verified-color-light: var(--cpd-color-green-300);
+$e2e-verified-color-light: #c0a8ff;
 $e2e-warning-color-light: var(--cpd-color-red-300);
 /* ******************** */
 
@@ -277,7 +285,7 @@ $voice-record-icon-color: $tertiary-content;
 
 /* Bubble tiles */
 /* ******************** */
-$eventbubble-self-bg: var(--cpd-color-green-300);
+$eventbubble-self-bg: #e6e0ff;
 $eventbubble-others-bg: var(--cpd-color-gray-300);
 $eventbubble-bg-hover: var(--cpd-color-bg-subtle-secondary);
 /* ******************** */
@@ -366,11 +374,28 @@ body {
 /* diff highlight colors */
 /* ******************** */
 .hljs-addition {
-    background: var(--cpd-color-green-500);
+    background: #c0a8ff;
 }
 
 .hljs-deletion {
     background: var(--cpd-color-red-500);
 }
+
+/* ******************** */
+/* StreamMint Custom Branding and Purple Theme (Light) */
+/* ******************** */
+
+/* StreamMint Logo Branding */
+.mx_AuthHeaderLogo,
+.mx_AuthHeaderLogo img {
+    background-image: url("../../../favicon.ico") !important;
+    width: 64px !important;
+    height: 64px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+
+
 
 /* ******************** */
