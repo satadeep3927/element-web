@@ -13,7 +13,6 @@ import SdkConfig from "../../../SdkConfig";
 import AuthPage from "./AuthPage";
 import SettingsStore from "../../../settings/SettingsStore";
 import { UIFeature } from "../../../settings/UIFeature";
-import LanguageSelector from "./LanguageSelector";
 import EmbeddedPage from "../../structures/EmbeddedPage";
 import { MATRIX_LOGO_HTML } from "../../structures/static-page-vars";
 
@@ -47,9 +46,9 @@ export default class Welcome extends React.PureComponent<EmptyObject> {
                         mx_WelcomePage_registrationDisabled: !SettingsStore.getValue(UIFeature.Registration),
                     })}
                     data-testid="mx_welcome_screen"
+                    style={{ minHeight: "100vh", width: "100%" }}
                 >
                     <EmbeddedPage className="mx_WelcomePage" url={pageUrl} replaceMap={replaceMap} />
-                    <LanguageSelector />
                 </div>
             </AuthPage>
         );
