@@ -676,6 +676,8 @@ module.exports = (env, argv) => {
                     { from: "vector-icons/**", context: path.resolve(__dirname, "res") },
                     { from: "decoder-ring/**", context: path.resolve(__dirname, "res") },
                     { from: "media/**", context: path.resolve(__dirname, "res/") },
+                    { from: "videos/**", context: path.resolve(__dirname, "res/") },
+                    { from: "logo/**", context: path.resolve(__dirname, "res/") },
                     { from: "config.json", noErrorOnMissing: true },
                     // Element Call embedded widget
                     {
